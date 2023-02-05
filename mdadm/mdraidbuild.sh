@@ -32,13 +32,13 @@ mdadm --stop /dev/md1
 #zpool export test
 
 # get rid of any mdraid or ZFS headers on part1 of all test disks
-for disk in `ls /dev/disk/by-id | grep ST1200 | grep part1 | sed 's#^#/dev/disk/by-id/#'`; do wipefs -a $disk; done
+for disk in `ls /dev/disk/by-id | grep WD120 | grep part1 | sed 's#^#/dev/disk/by-id/#'`; do wipefs -a $disk; done
 
 # give system time to settle
 sleep 5
 
 # build array RAID$LEVEL of $NUM test disks with bitmap type $BITMAP
-ls /dev/disk/by-id | grep ST1200 | grep part1 | head -n$NUM | sed 's#^#/dev/disk/by-id/#' | xargs mdadm --create /dev/md1 --assume-clean -l$LEVEL -n$NUM -b$BITMAP
+ls /dev/disk/by-id | grep WD120 | grep part1 | head -n$NUM | sed 's#^#/dev/disk/by-id/#' | xargs mdadm --create /dev/md1 --assume-clean -l$LEVEL -n$NUM -b$BITMAP
 
 # output abbreviated status of /dev/md1
 mdadm --detail /dev/md1 | grep -B20 Consistency | egrep -v '(Active|Failed|Working|Spare) Devices' | grep -v "Used Dev Size" | grep -v "Total Devices" | grep -v "Update Time"
