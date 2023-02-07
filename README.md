@@ -3,7 +3,7 @@
 # WARNING WARNING WARNING
 
 These test scripts are **dangerous** and should not be casually run by people who don't know exactly what they're doing!
-They assume that they're in a system where any Ironwolf 12TB drive is a device under test and can be casually repartitioned, added to or removed from mdraid arrays or ZFS pools **without any warning** and they'll do exactly that.
+They assume that they're in a system where any Western Digital 12TB drive is a device under test and can be casually repartitioned, added to or removed from mdraid arrays or ZFS pools **without any warning** and they'll do exactly that.
 
 They similarly assume that any mdraid array under **/dev/md1** and any ZFS pool named **test** are devices under test, fair game, and can be destroyed, recreated, or otherwise mangled **without any warnings**.
 
