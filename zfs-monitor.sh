@@ -1,1 +1,1 @@
-watch -n 1 'zpool iostat test -y -v 1 1 ; echo ; ls -l /dev/disk/by-id | grep WD120 | grep -v part | awk "{print \$11}" | sed "s#../../#/dev/#" | xargs iostat --human -xy 1 1 /dev/md1'
+watch -n 1 'zpool iostat test -y -v 1 1 ; echo ; ls -l /dev/disk/by-id | grep WD120 | grep -v part | awk "{print \$11}" | sed "s#../../#/dev/#" | xargs iostat --human -xy 1 1'
