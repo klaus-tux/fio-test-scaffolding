@@ -1,5 +1,7 @@
 #!/bin/sh
 
+mkdir -p /test
+
 echo "single disk, ext4"
 	umount /test
 	mdadm --stop /dev/md1
@@ -46,3 +48,5 @@ echo "mdraid10, no bitmap, xfs"
 	mkfs.xfs /dev/md1
 	mount /dev/md1 /test
 	./fio-mdadm-full-test.pl
+
+rm -rf /test
