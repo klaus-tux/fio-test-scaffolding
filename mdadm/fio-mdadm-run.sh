@@ -19,30 +19,6 @@ echo "mdraid10, internal bitmap, ext4"
 	mount /dev/md1 /test
 	./fio-mdadm-full-test.pl
 
-	for disks in 4 6 8
-	do
-	  ./mdraidbuild.sh 10 $disks internal
-	  mkfs.ext4 -E lazy_table_init=0,lazy_journal_init=0 /dev/md1
-	  mount /dev/md1 /test
-	  ./fio-mdadm-full-test.pl
-	done
-
-echo "mdraid6, internal bitmap, ext4"
-
-	# mdraid"6" 3 disks is just mdraid5 3 disks
-	./mdraidbuild.sh 5 3 internal
-	mkfs.ext4 -E lazy_table_init=0,lazy_journal_init=0 /dev/md1
-	mount /dev/md1 /test
-	./fio-mdadm-full-test.pl
-
-	for disks in 4 5 6 7 8
-	do
-	  ./mdraidbuild.sh 6 $disks internal
-	  mkfs.ext4 -E lazy_table_init=0,lazy_journal_init=0 /dev/md1
-	  mount /dev/md1 /test
-	  ./fio-mdadm-full-test.pl
-	done
-
 echo "mdraid10, no bitmap, ext4"
 
 	# mdraid"10" 2 disks is just mdraid1 2 disks
@@ -50,30 +26,6 @@ echo "mdraid10, no bitmap, ext4"
 	mkfs.ext4 -E lazy_table_init=0,lazy_journal_init=0 /dev/md1
 	mount /dev/md1 /test
 	./fio-mdadm-full-test.pl
-
-	for disks in 4 6 8
-	do
-	  ./mdraidbuild.sh 10 $disks none
-	  mkfs.ext4 -E lazy_table_init=0,lazy_journal_init=0 /dev/md1
-	  mount /dev/md1 /test
-	  ./fio-mdadm-full-test.pl
-	done
-
-echo "mdraid6, no bitmap, ext4"
-
-	# mdraid"6" 3 disks is just mdraid5 3 disks
-	./mdraidbuild.sh 5 3 none
-	mkfs.ext4 -E lazy_table_init=0,lazy_journal_init=0 /dev/md1
-	mount /dev/md1 /test
-	./fio-mdadm-full-test.pl
-
-	for disks in 4 5 6 7 8
-	do
-	  ./mdraidbuild.sh 6 $disks none
-	  mkfs.ext4 -E lazy_table_init=0,lazy_journal_init=0 /dev/md1
-	  mount /dev/md1 /test
-	  ./fio-mdadm-full-test.pl
-	done
 
 echo "single disk, xfs"
 	umount /test
@@ -94,30 +46,3 @@ echo "mdraid10, no bitmap, xfs"
 	mkfs.xfs /dev/md1
 	mount /dev/md1 /test
 	./fio-mdadm-full-test.pl
-
-	for disks in 4 6 8
-	do
-	  ./mdraidbuild.sh 10 $disks none
-	  wipefs -a /dev/md1
-	  mkfs.xfs /dev/md1
-	  mount /dev/md1 /test
-	  ./fio-mdadm-full-test.pl
-	done
-
-echo "mdraid6, no bitmap, xfs"
-
-	# mdraid"6" 3 disks is just mdraid5 3 disks
-	./mdraidbuild.sh 5 3 none
-	wipefs -a /dev/md1
-	mkfs.xfs /dev/md1
-	mount /dev/md1 /test
-	./fio-mdadm-full-test.pl
-
-	for disks in 4 5 6 7 8
-	do
-	  ./mdraidbuild.sh 6 $disks none
-	  wipefs -a /dev/md1
-	  mkfs.xfs /dev/md1
-	  mount /dev/md1 /test
-	  ./fio-mdadm-full-test.pl
-	done
