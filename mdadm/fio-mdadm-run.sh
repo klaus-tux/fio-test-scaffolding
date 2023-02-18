@@ -7,7 +7,7 @@ echo "single disk, ext4"
 	mdadm --stop /dev/md1
 	DISK=`ls /dev/disk/by-id | grep WD120 | grep part1 | head -n 1 | sed 's#^#/dev/disk/by-id/#'`
 	wipefs -a $DISK
-	mkfs.ext4 -E lazy_itable_init=0, lazy_journal_init=0 $DISK
+	mkfs.ext4 -E lazy_itable_init=0,lazy_journal_init=0 $DISK
 	mount $DISK /test
 	echo "Device /test is single-disk ext4 $DISK"
 	echo 
