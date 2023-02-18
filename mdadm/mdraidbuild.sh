@@ -5,8 +5,8 @@
 # WARNING WARNING WARNING WARNING WARNING
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 #
-# This script assumes that all Seagate 12TB disks present are test disks.
-# DO NOT RUN IF USING 12TB SEAGATE DRIVES IN PRODUCTION!
+# This script assumes that all Western Digital 12TB disks present are test disks.
+# DO NOT RUN IF USING 12TB WESTERN DIGITAL DRIVES IN PRODUCTION!
 #
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # WARNING WARNING WARNING WARNING WARNING
@@ -15,9 +15,9 @@ if [ $# -ne 3 ]
   then
     echo "This script needs three arguments: RAID level, number of disks, and bitmap (none/internal)."
     echo
-    echo "WARNING: this script assumes all Seagate 12TB disks it can find"
+    echo "WARNING: this script assumes all Western Digital 12TB disks it can find"
     echo "are test disks, and will do VERY DESTRUCTIVE THINGS to them!"
-    echo "DO NOT RUN THIS SCRIPT on a system with production Seagate 12TB disks!"
+    echo "DO NOT RUN THIS SCRIPT on a system with production Western Digital 12TB disks!"
     echo
     exit 1
 fi
